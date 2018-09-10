@@ -20,7 +20,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         GIDSignIn.sharedInstance().serverClientID = "346717667443-rcmrsqd77bl3b1opdf0tgp11m7cem9no.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().scopes = ["https://www.googleapis.com/auth/youtube.readonly", "https://www.googleapis.com/auth/youtube.upload"]
         GIDSignIn.sharedInstance().signIn()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +68,16 @@ extension ViewController : GIDSignInDelegate {
                   print(fullName)
                   print(idToken)
             print(user.serverAuthCode)
+            let manager = YouTubeManager()
+            let videoPath = Bundle.main.path(forResource: "test", ofType: "mov")
+            
+            if let path = videoPath {
+                manager.postVideoToYouTube(fileUrl: URL(fileURLWithPath: path), title: "Shot With MoviePro on iOS", description: "This Video was made using MoviePro 7.0 test app version", keywords: ["test, me", ""], sharingOpt: YouTubeSharingOption.sharePrivate) { (string, flag) in
+                    NSLog("Uploaded video")
+                }
+            } else {
+                print("Notthing")
+            }
             
             // ...
         } else {

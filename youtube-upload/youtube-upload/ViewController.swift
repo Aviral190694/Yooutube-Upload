@@ -72,7 +72,7 @@ extension ViewController : GIDSignInDelegate {
             let videoPath = Bundle.main.path(forResource: "test", ofType: "mov")
             
             if let path = videoPath {
-                manager.postVideoToYouTube(fileUrl: URL(fileURLWithPath: path), title: "Shot With MoviePro on iOS", description: "This Video was made using MoviePro 7.0 test app version", keywords: ["test, me", ""], sharingOpt: YouTubeSharingOption.sharePrivate) { (string, flag) in
+                manager.postVideoToYouTube(fileUrl: URL(fileURLWithPath: path), title: "test", description: "This Video is for testing", keywords: ["test, me", ""], sharingOpt: YouTubeSharingOption.sharePrivate) { (string, flag) in
                     NSLog("Uploaded video")
                 }
             } else {

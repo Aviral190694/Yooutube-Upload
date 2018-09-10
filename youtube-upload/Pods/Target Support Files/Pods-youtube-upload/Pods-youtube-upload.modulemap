@@ -1,0 +1,6 @@
+framework module Pods_youtube_upload {
+  umbrella header "Pods-youtube-upload-umbrella.h"
+
+  export *
+  module * { export * }
+}
